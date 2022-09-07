@@ -1,1 +1,1 @@
-shell @ c
+SIMPLE SHELL PROJECT
