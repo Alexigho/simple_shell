@@ -3,25 +3,25 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
 #include <string.h>
+#include <signal.h>
+#include <unistd.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-/*initail size of buffer for user input */
+/* innitial size of buffer for user input */
 #define READ_BUF 1000
+
 #define DELIM " \a\t\r\n"
 
-/*deine type*/
-
+/* command type */
 #define INTERNAL_CMD 1
 #define EXTERNAL_CMD 2
 #define PATH_CMD 3
 #define INVALID_CMD -1
 
-/*declaring global eniron variable */
-extern char **environ
+/* declaring global environ variable */
+extern char **environ;
 
 typedef struct internal_func
 {
@@ -35,27 +35,29 @@ void ch_dir(char **);
 void quit(char **);
 
 /* shell utility function */
-void ctrl_c(int);
+void ctrl_C(int);
 char *_getline(void);
-char **tokenize(char *, const char*);
+char **tokenize(char *, const char *);
 void shell_execute(char **, int);
 int check_command(char *);
 void execute(char **, int);
 
 
-/* SHELL HELPER FUNCTION */
+
+/* shell helper function */
 int print(char *, int);
-void (*get_func(char*))(char **);
+void (*get_func(char *))(char **);
 
-
-/* shell string function */
+/* shell string functions */
 int _strlen(char *);
-int _strcmp(char *, char *);
+int _strcmp(char*, char *);
+
 
 /* shell memory management */
-void *realloc(void *, int, int);
+void *_realloc(void *, int, int);
 
-/* enironment path */
+
+/* environment path */
 char *_getenv(char *);
 
 #endif /* SHELL_H */
